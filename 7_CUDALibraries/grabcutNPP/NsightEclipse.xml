@@ -1,0 +1,74 @@
+<entry>
+    <name>GrabCut with NPP</name>
+    <description><![CDATA[CUDA Implementation of Rother et al. GrabCut approach using the 8 neighborhood NPP Graphcut primitive introduced in CUDA 4.1. (C. Rother, V. Kolmogorov, A. Blake. GrabCut: Interactive Foreground Extraction using Iterated Graph Cuts. ACM Transactions on Graphics (SIGGRAPH'04), 2004)]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 1.1</minspec>
+    <keywords>CUDA,NPP,segmentation,graphcuts</keywords>
+    <scope>1:CUDA Basic Topics,1:Performance Strategies,2:Computer Vision</scope>
+    <files>
+        <file>..\..\common\data\flower.ppm</file>
+        <file>..\..\common\data\flower_gold.png</file>
+        <file>..\..\common\data\person.ppm</file>
+        <file>..\..\common\data\sponge.ppm</file>
+    </files>
+    <qatests>
+        <qatest>-verify=flower_gold.png</qatest>
+    </qatests>
+    
+    <keyconcepts level="basic">Performance Strategies</keyconcepts>
+    <keyconcepts level="basic">Image Processing</keyconcepts>
+    <keyconcepts level="basic">NPP Library</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+    <library>GLU</library>
+    <library>GL</library>
+    <library os="macosx" framework="true">GLUT</library>
+    <library os="linux">X11</library>
+    <library os="linux">GLEW</library>
+    <library os="linux">glut</library>
+    <library>nppi</library>
+    <library>nppc</library>
+    <library>freeimage</library>
+ 
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows" arch="x86_64">../../common/lib/x64</library-path>
+    <library-path os="windows" arch="Win32">../../common/lib/Win32</library-path>
+    <library-path os="linux" arch="x86_64">../../common/lib/linux/x86_64</library-path>
+    <library-path os="linux" arch="i686">../../common/lib/linux/i686</library-path>
+    <library-path os="macosx">../../common/lib/darwin</library-path>
+    <library-path os="linux" arch="x86_64">../common/FreeImage/lib/linux/x86_64</library-path>
+    <library-path os="linux" arch="i686">../common/FreeImage/lib/linux/i686</library-path>
+    <library-path os="macosx">../common/FreeImage/lib/darwin</library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    <include-path>../common/UtilNPP/</include-path>
+    <include-path>../common/FreeImage/include </include-path>
+
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    
+    <nvcc-compiler file="GrabcutGMM.cu"></nvcc-compiler>
+    <nvcc-compiler file="GrabcutHistogram.cu"></nvcc-compiler>
+    <nvcc-compiler file="GrabcutUtil.cu"></nvcc-compiler>
+    <sm-arch>sm11</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>GrabCutMain.cpp</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

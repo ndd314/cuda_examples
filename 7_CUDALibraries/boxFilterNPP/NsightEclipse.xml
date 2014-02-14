@@ -1,0 +1,51 @@
+<entry>
+    <name>Box Filter with NPP</name>
+    <description><![CDATA[A NPP SDK sample that demonstrates how to use NPP FilterBox function to perform a Box Filter.]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords>CUDA,NPP,Image Processing,box filter</keywords>
+    <scope>1:CUDA Basic Topics,1:Performance Strategies,2:Image Processing,2:Computer Vision</scope>
+    <files>
+        <file>..\..\common\data\Lena.pgm</file>
+    </files>
+    
+    <keyconcepts level="basic">Performance Strategies</keyconcepts>
+    <keyconcepts level="basic">Image Processing</keyconcepts>
+    <keyconcepts level="basic">NPP Library</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+    <library>nppi</library>
+    <library>nppc</library>
+	<library>freeimage</library>
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows"></library-path>
+    <library-path os="linux" arch="x86_64">../common/FreeImage/lib/linux/x86_64</library-path>
+    <library-path os="linux" arch="i686">../common/FreeImage/lib/linux/i686</library-path>
+    <library-path os="macosx">../common/FreeImage/lib/darwin</library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+	<include-path>../common/UtilNPP/</include-path>
+	<include-path>../common/FreeImage/include </include-path>
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    
+    <sm-arch></sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>boxFilterNPP.cpp</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

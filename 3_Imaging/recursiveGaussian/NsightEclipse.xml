@@ -1,0 +1,74 @@
+<entry>
+    <name>Recursive Gaussian Filter</name>
+    <description><![CDATA[This sample implements a Gaussian blur using Deriche's recursive method. The advantage of this method is that the execution time is independent of the filter width.]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords>GPGPU,CUDA,Image Processing,box filter,opengl</keywords>
+    <scope>2:Graphics Interop,2:Image Processing,2:Computer Vision</scope>
+    <files>
+      <file>data\lena.ppm</file>
+      <file>data\ref_10.ppm</file>
+      <file>data\ref_14.ppm</file>
+      <file>data\ref_18.ppm</file>
+      <file>data\ref_22.ppm</file>
+    </files>
+    <qatests>
+      <qatest>-sigma=10 -file=ref_10.ppm</qatest>
+      <qatest>-sigma=14 -file=ref_14.ppm</qatest>
+      <qatest>-sigma=18 -file=ref_18.ppm</qatest>
+      <qatest>-sigma=22 -file=ref_22.ppm</qatest>
+    </qatests>
+    <cudaapi>cudaGLSetGLDevice</cudaapi>
+    <cudaapi>cudaGraphicsMapResources</cudaapi>
+    <cudaapi>cudaGraphicsUnmapResources</cudaapi>
+    <cudaapi>cudaGraphicsResourceGetMappedPointer</cudaapi>
+    <cudaapi>cudaGraphicsRegisterResource</cudaapi>
+    <cudaapi>cudaGraphicsGLRegisterBuffer</cudaapi>
+    <cudaapi>cudaGraphicsUnregisterResource</cudaapi>
+    <keyconcepts level="advanced">Graphics Interop</keyconcepts>
+    <keyconcepts level="advanced">Image Processing</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+    <library>GLU</library>
+    <library>GL</library>
+    <library os="macosx" framework="true">GLUT</library>
+    <library os="linux">X11</library>
+    <library os="linux">GLEW</library>
+    <library os="linux">glut</library>
+    <library os="linux">Xi</library>
+    <library os="linux">Xmu</library>
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows" arch="x86_64">../../common/lib/x64</library-path>
+    <library-path os="windows" arch="Win32">../../common/lib/Win32</library-path>
+    <library-path os="linux" arch="x86_64">../../common/lib/linux/x86_64</library-path>
+    <library-path os="linux" arch="i686">../../common/lib/linux/i686</library-path>
+    <library-path os="macosx">../../common/lib/darwin</library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    
+    <nvcc-compiler file="recursiveGaussian_Gold.cu"></nvcc-compiler>
+    <sm-arch>sm10</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>recursiveGaussian.cpp</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

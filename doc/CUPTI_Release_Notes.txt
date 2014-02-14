@@ -1,0 +1,106 @@
+------------------------------------------------------------------------------
+NVIDIA CUDA Profiler Tools Interface (CUPTI)
+Release Notes
+CUDA Toolkit 5.5
+------------------------------------------------------------------------------
+
+FILES IN THE RELEASE:
+--------------------
+* <cupti_dir>/include  : Contains CUPTI header files
+
+* <cupti_dir>/lib*     : Contains CUPTI library
+
+* <cupti_dir>/sample   : Contains samples showing use of the CUPTI APIs
+
+* <cupti_dir>/doc      : Contains the CUPTI release notes
+
+
+SUPPORTED DISTRIBUTIONS
+-----------------------
+CUPTI is supported on all platforms for which CUDA Toolkit is supported.
+
+
+SYSTEM REQUIREMENTS
+-------------------
+. CUDA-enabled GPU
+
+. NVIDIA Display Driver
+
+. NVIDIA CUDA Toolkit
+
+
+COMPILING AND RUNNING CUPTI SAMPLES
+----------------------------------- 
+On Windows, the compiling and running CUPTI samples using the included
+Makefiles requires the Cygwin environment.
+
+To compile:
+ > cd <cupti_dir>/sample/<sample>
+ > make
+
+To run the sample:
+ > make run
+
+
+INCOMPATIBLE CHANGES FROM CUPTI 4.0
+-----------------------------------
+A number of non-backward compatible API changes are made in 4.1. These
+changes require minor source modifications to existing code compiled
+against CUPTI 4.0. In addition, some previously incorrect and
+undefined behavior is now prevented by improved error checking. Your
+code may need to be modified to handle these new error cases.
+
+- Multiple CUPTI subscribers are not allowed. In 4.0, cuptiSubscribe()
+  could be used to enable multiple subscriber callback functions to be
+  active at the same time. When multiple callback functions were
+  subscribed, invocation of those callbacks did not respect the domain
+  registration for those callback functions. In 4.1 and later,
+  cuptiSubscribe() returns CUPTI_ERROR_MAX_LIMIT_REACHED if there is
+  already an active subscriber.
+
+- The CUpti_EventID values for tesla devices have changed in 4.1 to
+  make all CUpti_EventID values unique across all devices. Going
+  forward CUpti_EventID values will be added for new devices and
+  events, but existing values will not be changed. If your application
+  has stored CUpti_EventID values (for example, as part of the data
+  collected for a profiling session), those CUpti_EventIDs must be
+  translated to the new ID values before being used in 4.1 and later
+  APIs.
+
+- In enumeration CUpti_EventDomainAttribute,
+  CUPTI_EVENT_DOMAIN_MAX_EVENTS has been removed. The number of events
+  in an event domain can be retrieved with
+  cuptiEventDomainGetNumEvents().
+
+- cuptiDeviceGetAttribute(), cuptiEventGroupGetAttribute() and
+  cuptiEventGroupSetAttribute() now take a size parameter and the
+  'value' parameter now has type 'void *'.
+
+- cuptiEventDomainGetAttribute() no longer takes a CUdevice
+  parameter. This function is now used to get event domain attributes
+  that are device independent. A new function
+  cuptiDeviceGetEventDomainAttribute() is added to get event domain
+  attributes that are device dependent.
+
+- cuptiEventDomainGetNumEvents(), cuptiEventDomainEnumEvents() and
+  cuptiEventGetAttribute() no longer take a CUdevice parameter.
+
+- The contextUid field of the CUpti_CallbackData structure has been
+  changed from type uint64_t to type uint32_t.
+
+
+KNOWN ISSUES
+------------
+
+- CUPTI activity record collection must be initialized before any CUDA
+  function is invoked. If not, activity collection may be incomplete
+  or entirely disabled. Make sure that some CUPTI activity API (such
+  as cuptiActivityEnable()) is called before the first CUDA driver or
+  runtime function.
+
+- The activity API functions cuptiActivityEnqueueBuffer() and
+  cuptiActivityDequeueBuffer() are deprecated and will be removed in a
+  future release. The new asynchronous API implemented by
+  cuptiActivityRegisterCallbacks(), cuptiActivityFlush(), and
+  cuptiActivityFlushAll() should be adopted. See the CUPTI
+  documentation for details.

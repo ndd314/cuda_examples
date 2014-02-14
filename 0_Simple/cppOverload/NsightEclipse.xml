@@ -1,0 +1,55 @@
+<entry>
+    <name>cppOverload</name>
+    <description><![CDATA[This sample demonstrates how to use C++ function overloading on the GPU.]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 2.0</minspec>
+    <keywords>GPGPU</keywords>
+    <scope>1:CUDA Basic Topics,1:Performance Strategies</scope>
+    <files>
+    </files>
+    <cudaapi>cudaFuncSetCacheConfig</cudaapi>
+    <cudaapi>cudaFuncGetAttributes</cudaapi>
+    
+    <keyconcepts level="basic">C++ Function Overloading</keyconcepts>
+    <keyconcepts level="basic">CUDA Streams and Events</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows" arch="Win32">$(CUDA_PATH)/lib/Win32</library-path>
+    <library-path os="windows" arch="x64">$(CUDA_PATH)/lib/x64</library-path>
+    <library-path os="linux" arch="i686">/usr/local/cuda/lib</library-path>
+    <library-path os="linux" arch="x86_64">/usr/local/cuda/lib64</library-path>
+    <library-path os="darwin">/usr/local/cuda/lib</library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    <nvcc-compiler file="cppOverload.cu"></nvcc-compiler>
+    <sm-arch>sm10</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <gcc-compiler os="darwin" arch="i686"   file="cppOverload.cu">-arch i686</gcc-compiler>
+    <gcc-compiler os="darwin" arch="x86_64" file="cppOverload.cu">-arch x86_64</gcc-compiler>
+    <gcc-compiler os="linux"  arch="i686"   file="cppOverload.cu">-m32</gcc-compiler>
+    <gcc-compiler os="linux"  arch="x86_64" file="cppOverload.cu">-m64</gcc-compiler>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>cppOverload_kernel.cu</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

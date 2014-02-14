@@ -1,0 +1,59 @@
+<entry>
+    <name>Simple Multi Copy and Compute</name>
+    <description><![CDATA[Supported in GPUs with Compute Capability 1.1, overlapping compute with one memcopy is possible from the host system.  For Quadro and Tesla GPUs with Compute Capability 2.0, a second overlapped copy operation in either direction at full speed is possible (PCI-e is symmetric).  This sample illustrates the usage of CUDA streams to achieve overlapping of kernel execution with data copies to and from the device. 
+]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 1.1</minspec>
+    <keywords>GPGPU</keywords>
+    <scope>1:CUDA Advanced Topics,1:Performance Strategies</scope>
+    <files>
+        <file>doc</file>
+        <file>doc\C1060_CopyOverlap.cpj</file>
+        <file>doc\C1060_CopyOverlap_Session1_Context_0.csv</file>
+        <file>doc\GTX480_CopyOverlap.cpj</file>
+        <file>doc\GTX480_CopyOverlap_Session1_Context_0.csv</file>
+    </files>
+    <cudaapi>cudaEventCreate</cudaapi>
+    <cudaapi>cudaEventRecord</cudaapi>
+    <cudaapi>cudaEventQuery</cudaapi>
+    <cudaapi>cudaEventDestroy</cudaapi>
+    <cudaapi>cudaEventElapsedTime</cudaapi>
+    <cudaapi>cudaMemcpyAsync</cudaapi>
+    <keyconcepts level="basic">CUDA Streams and Events</keyconcepts>
+    <keyconcepts level="basic">Asynchronous Data Transfers</keyconcepts>
+    <keyconcepts level="basic">Overlap Compute and Copy</keyconcepts>
+    <keyconcepts level="basic">GPU Performance</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows"></library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    <nvcc-compiler></nvcc-compiler>
+    <nvcc-compiler file="simpleMultiCopy.cu"></nvcc-compiler>
+    <sm-arch>sm10</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>simpleMultiCopy.cu</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

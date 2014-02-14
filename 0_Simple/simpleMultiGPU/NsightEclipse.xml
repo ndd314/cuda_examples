@@ -1,0 +1,53 @@
+﻿<entry>
+    <name>Simple Multi-GPU</name>
+    <description><![CDATA[This application demonstrates how to use the new CUDA 4.0 API for CUDA context management and multi-threaded access to run CUDA kernels on multiple-GPUs.]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords>Performance, multi-GPU support</keywords>
+    <scope>1:CUDA Basic Topics</scope>
+    <files>
+    </files>
+    <cudaapi>cudaEventCreate</cudaapi>
+    <cudaapi>cudaEventRecord</cudaapi>
+    <cudaapi>cudaEventQuery</cudaapi>
+    <cudaapi>cudaEventDestroy</cudaapi>
+    <cudaapi>cudaEventElapsedTime</cudaapi>
+    <cudaapi>cudaMemcpyAsync</cudaapi>
+    <keyconcepts level="basic">Asynchronous Data Transfers</keyconcepts>
+    <keyconcepts level="basic">CUDA Streams and Events</keyconcepts>
+	<keyconcepts level="basic">Multithreading</keyconcepts>
+	<keyconcepts level="basic">Multi-GPU</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows"></library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    <nvcc-compiler></nvcc-compiler>
+    <nvcc-compiler file="simpleMultiGPU.cu"></nvcc-compiler>
+    <sm-arch>sm10</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>simpleMultiGPU.cu</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

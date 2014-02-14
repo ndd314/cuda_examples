@@ -1,0 +1,47 @@
+<entry>
+    <name>Sobol Quasirandom Number Generator</name>
+    <description><![CDATA[This sample implements Sobol Quasirandom Sequence Generator. ]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords>CUDA,Advanced Topics,Quasi-Monte Carlo Integration,Computational Finance</keywords>
+    <scope>1:CUDA Advanced Topics,3:Computational Finance</scope>
+    <files>
+    </files>
+    <keyconcepts level="advanced">Computational Finance</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+    <library os="linux">X11</library>
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows"></library-path>
+    <library-path os="linux" arch="x86_64">../../common/lib/linux/x86_64</library-path>
+    <library-path os="linux" arch="i686">../../common/lib/linux/i686</library-path>
+    <library-path os="macosx">../../common/lib/darwin</library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    
+    <nvcc-compiler file="sobol_gpu.cu"></nvcc-compiler>
+    <sm-arch>sm10</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>sobel.cpp</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

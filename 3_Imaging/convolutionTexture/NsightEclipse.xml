@@ -1,0 +1,37 @@
+<entry>
+    <name>Texture-based Separable Convolution</name>
+    <description><![CDATA[Texture-based implementation of a separable 2D convolution with a gaussian kernel. Used for performance comparison against convolutionSeparable. ]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords>CUDA, DSP, separable convolution, finite impulse-response filter, Image Processing</keywords>
+    <scope>1:CUDA Basic Topics,2:Texture,1:Data-Parallel Algorithms,3:Linear Algebra,2:Image Processing,2:Computer Vision</scope>
+    <files></files>
+    
+    <keyconcepts level="basic">Image Processing</keyconcepts>
+    <keyconcepts level="basic">Texture</keyconcepts>
+    <keyconcepts level="basic">Data Parallel Algorithms</keyconcepts>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    
+    <nvcc-compiler file="convolutionTexture.cu"></nvcc-compiler>
+    <sm-arch>sm10</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>main.cpp</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

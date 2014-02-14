@@ -1,0 +1,56 @@
+<entry>
+    <name>Simple Surface Write</name>
+    <description><![CDATA[Simple example that demonstrates the use of 2D surface references (Write-to-Texture)]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 2.0</minspec>
+    <keywords></keywords>
+    <scope>1:CUDA Basic Topics,2:Texture,2:Image Processing</scope>
+    <files>
+        <file>data\ref_rotated.pgm</file>
+    </files>
+    <cudaapi>cudaMalloc</cudaapi>
+    <cudaapi>cudaMallocArray</cudaapi>
+    <cudaapi>cudaBindSurfaceToArray</cudaapi>
+    <cudaapi>cudaBindTextureToArray</cudaapi>
+    <cudaapi>cudaCreateChannelDesc</cudaapi>
+	<cudaapi>cudaMalloc</cudaapi>
+	<cudaapi>cudaFree</cudaapi>
+	<cudaapi>cudaFreeArray</cudaapi>
+    <cudaapi>cudaMemcpy</cudaapi>
+    
+    <keyconcepts level="basic">Texture</keyconcepts>
+	<keyconcepts level="basic">Surface Writes</keyconcepts>
+    <keyconcepts level="basic">Image Processing</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows"></library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    <nvcc-compiler></nvcc-compiler>
+    <nvcc-compiler file="simpleSurfaceWrite.cu"></nvcc-compiler>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>simpleSurfaceWrite.cu</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

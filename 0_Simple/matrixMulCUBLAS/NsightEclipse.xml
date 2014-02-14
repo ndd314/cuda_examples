@@ -1,0 +1,60 @@
+<entry>
+    <name>Matrix Multiplication (CUBLAS)</name>
+    <description><![CDATA[This sample implements matrix multiplication from Chapter 3 of the programming guide.
+To illustrate GPU performance for matrix multiply, this sample also shows how to use the new CUDA 4.0 interface for CUBLAS to demonstrate high-performance performance for matrix multiplication.]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords>CUDA,CUBLAS,matrix multiply</keywords>
+    <scope>1:CUDA Basic Topics,3:Linear Algebra</scope>
+    <files>
+    </files>
+    <cudaapi>cudaEventCreate</cudaapi>
+    <cudaapi>cudaEventRecord</cudaapi>
+    <cudaapi>cudaEventQuery</cudaapi>
+    <cudaapi>cudaEventDestroy</cudaapi>
+    <cudaapi>cudaEventElapsedTime</cudaapi>
+    <cudaapi>cudaMalloc</cudaapi>
+    <cudaapi>cudaFree</cudaapi>
+    <cudaapi>cudaMemcpy</cudaapi>
+    <cudaapi>cublasCreate</cudaapi>
+    <cudaapi>cublasSgemm</cudaapi>
+    <keyconcepts level="basic">CUDA Runtime API</keyconcepts>
+    <keyconcepts level="basic">Performance Strategies</keyconcepts>
+    <keyconcepts level="basic">Linear Algebra</keyconcepts>
+    <keyconcepts level="basic">CUBLAS</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+    <library>cublas</library>
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows" arch="Win32">$(CUDA_PATH)/lib/Win32</library-path>
+    <library-path os="windows" arch="x64">$(CUDA_PATH)/lib/x64</library-path>
+    <library-path os="linux" arch="i686">/usr/local/cuda/lib</library-path>
+    <library-path os="linux" arch="x86_64">/usr/local/cuda/lib64</library-path>
+    <library-path os="darwin">/usr/local/cuda/lib</library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    <gcc-compiler></gcc-compiler>
+    <gcc-compiler file="matrixMulCUBLAS.cpp"></gcc-compiler>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>matrixMulCUBLAS.cpp</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

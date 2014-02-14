@@ -1,0 +1,59 @@
+<entry>
+    <name>Pitch Linear Texture</name>
+    <description><![CDATA[Use of Pitch Linear Textures]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords>GPGPU,Texture</keywords>
+    <scope>1:CUDA Basic Topics,2:Image Processing</scope>
+    <files>
+    </files>
+    <cudaapi>cudaMallocPitch</cudaapi>
+    <cudaapi>cudaMallocArray</cudaapi>
+	<cudaapi>cudaMemcpy2D</cudaapi>
+    <cudaapi>cudaMemcpyToArray</cudaapi>
+    <cudaapi>cudaBindTexture2D</cudaapi>
+    <cudaapi>cudaBindTextureToArray</cudaapi>
+    <cudaapi>cudaCreateChannelDesc</cudaapi>
+	<cudaapi>cudaMalloc</cudaapi>
+	<cudaapi>cudaFree</cudaapi>
+	<cudaapi>cudaFreeArray</cudaapi>
+    <cudaapi>cudaUnbindTexture</cudaapi>
+    <cudaapi>cudaMemset2D</cudaapi>
+    <cudaapi>cudaMemcpy2D</cudaapi>
+    
+    <keyconcepts level="basic">Texture</keyconcepts>
+    <keyconcepts level="basic">Image Processing</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows"></library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    <nvcc-compiler></nvcc-compiler>
+    <nvcc-compiler file="simplePitchLinearTexture.cu"></nvcc-compiler>
+    <sm-arch>sm10</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>simplePitchLinearTexture.cu</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

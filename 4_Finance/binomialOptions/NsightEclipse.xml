@@ -1,0 +1,37 @@
+<entry>
+    <name>Binomial Option Pricing</name>
+    <description><![CDATA[This sample evaluates fair call price for a given set of European options under binomial model.  This sample will also take advantage of double precision if a GTX 200 class GPU is present.]]></description>
+    <whitepaper>doc\binomialOptions.pdf</whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords>CUDA, Computational Finance, option pricing, binomial tree</keywords>
+    <scope>1:CUDA Advanced Topics, 3:Computational Finance</scope>
+    <files>
+    </files>
+    <keyconcepts level="advanced">Computational Finance</keyconcepts>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    
+    <nvcc-compiler file="binomialOptions_SM10.cu"></nvcc-compiler>
+    <nvcc-compiler file="binomialOptions_SM13.cu"></nvcc-compiler>
+    <sm-arch>sm13</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>binomialOptions.cpp</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+
+</entry>

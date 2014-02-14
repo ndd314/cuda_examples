@@ -1,0 +1,56 @@
+<entry>
+    <name>cudaOpenMP</name>
+    <description><![CDATA[This sample demonstrates how to use OpenMP API to write an application for multiple GPUs.  This executable is not pre-built with the SDK installer.]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords>CUDA,OpenMP,cluster,multi-GPU Support</keywords>
+    <scope>1:CUDA Basic Topics,1:CUDA Systems Integration</scope>
+    <files>
+    </files>
+    <cudaapi>cudaMalloc</cudaapi>
+    <cudaapi>cudaFree</cudaapi>
+    <cudaapi>cudaMemcpy</cudaapi>
+    
+    <keyconcepts level="basic">CUDA Systems Integration</keyconcepts>
+    <keyconcepts level="basic">OpenMP</keyconcepts>
+	<keyconcepts level="basic">Multithreading</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows" arch="Win32">$(CUDA_PATH)/lib/Win32</library-path>
+    <library-path os="windows" arch="x64">$(CUDA_PATH)/lib/x64</library-path>
+    <library-path os="linux" arch="i686">/usr/local/cuda/lib</library-path>
+    <library-path os="linux" arch="x86_64">/usr/local/cuda/lib64</library-path>
+    <library-path os="darwin">/usr/local/cuda/lib</library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    <nvcc-compiler></nvcc-compiler>
+    <nvcc-compiler file="cudaOpenMP.cu"></nvcc-compiler>
+    <sm-arch>sm10</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>cudaOpenMP.cu</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+
+	<no-nsight-eclipse />
+</entry>

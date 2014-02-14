@@ -1,0 +1,63 @@
+<entry>
+    <name>Matrix Multiplication (CUDA Driver API version with Dynamic Linking Version)</name>
+    <description><![CDATA[This sample revisits matrix multiplication using the CUDA driver API. 
+It demonstrates how to link to CUDA driver at runtime and how to use JIT (just-in-time) compilation from PTX code.
+It has been written for clarity of exposition to illustrate various CUDA programming principles, not with the goal of providing the most performant generic kernel for matrix multiplication.
+CUBLAS provides high-performance matrix multiplication.]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords>CUDA,matrix multiply,Advanced Topics,Linear Algebra</keywords>
+    <scope>1:CUDA Advanced Topics</scope>
+    <files>
+    </files>
+    <cudaapi>cuModuleLoad</cudaapi>
+    <cudaapi>cuModuleLoadDataEx</cudaapi>
+    <cudaapi>cuModuleGetFunction</cudaapi>
+    <cudaapi>cuMemAlloc</cudaapi>
+	<cudaapi>cuMemFree</cudaapi>
+    <cudaapi>cuMemcpyHtoD</cudaapi>
+    <cudaapi>cuMemcpyDtoH</cudaapi>
+    <cudaapi>cuLaunchKernel</cudaapi>
+    
+    <keyconcepts level="advanced">CUDA Driver API</keyconcepts>
+    <keyconcepts level="advanced">CUDA Dynamically Linked Library</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+    
+	<!-- Either absolute or relative to sample -->
+    <library os="linux">cuda</library>
+    <library os="windows">cuda</library>
+    <library os="macosx" framework="true">CUDA</library>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    <!-- These options will be passed to GCC compiler as is and for all files -->
+    <gcc-compiler os="darwin" arch="i686"   file="matrixMulDynlinkJIT.cpp">-arch i686</gcc-compiler>
+    <gcc-compiler os="darwin" arch="x86_64" file="matrixMulDynlinkJIT.cpp">-arch x86_64</gcc-compiler>
+    <gcc-compiler os="linux"  arch="i686"   file="matrixMulDynlinkJIT.cpp">-m32</gcc-compiler>
+    <gcc-compiler os="linux"  arch="x86_64" file="matrixMulDynlinkJIT.cpp">-m64</gcc-compiler>
+    <gcc-compiler file="matrixMulDynlinkJIT.cpp">-o matrixMulDrv.o -c matrixMulDrv.cpp</gcc-compiler>
+	
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>matrixMulDynlinkJIT.cpp</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+
+    <!-- Nsight EE does not support driver API samples import -->
+    <no-nsight-eclipse/>
+</entry>

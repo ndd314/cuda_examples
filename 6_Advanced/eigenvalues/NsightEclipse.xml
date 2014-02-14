@@ -1,0 +1,50 @@
+<entry>
+    <name>Eigenvalues</name>
+    <description><![CDATA[The computation of all or a subset of all eigenvalues is an important problem in Linear Algebra, statistics, physics, and many other fields. This sample demonstrates a parallel implementation of a bisection algorithm for the computation of all eigenvalues of a
+tridiagonal symmetric matrix of arbitrary size with CUDA.]]></description>
+    <whitepaper>doc\eigenvalues.pdf</whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords>CUDA, GPGPU, Eigenvalues, Linear Algebra</keywords>
+    <scope>1:CUDA Advanced Topics,3:Linear Algebra</scope>
+    <files>
+        <file>data\diagonal.dat</file>
+        <file>data\reference.dat</file>
+        <file>data\superdiagonal.dat</file>
+    </files>
+    
+    <keyconcepts level="advanced">Linear Algebra</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows"></library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    <nvcc-compiler file="bisect_large.cu"></nvcc-compiler>
+	<nvcc-compiler file="bisect_small.cu"></nvcc-compiler>
+	<nvcc-compiler file="bisect_util.cu"></nvcc-compiler>
+	<nvcc-compiler file="main.cu"></nvcc-compiler>
+    <sm-arch>sm10</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>main.cu</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

@@ -1,0 +1,52 @@
+<entry>
+    <name>Simple CUDA Callbacks</name>
+    <description>
+      <![CDATA[This sample implements multi-threaded heterogeneous computing workloads with the new CPU callbacks for CUDA streams and events introduced with CUDA 5.0.]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords>CUDA</keywords>
+    <scope>1:CUDA Basic Topics, 1:Performance Strategies</scope>
+    <files>
+    </files>
+    <cudaapi>cudaStreamCreate</cudaapi>
+    <cudaapi>cudaMemcpyAsync</cudaapi>
+    <cudaapi>cudaStreamAddCallback</cudaapi>	
+    <cudaapi>cudaStreamDestroy</cudaapi>	
+    
+    <keyconcepts level="basic">CUDA Streams</keyconcepts>
+    <keyconcepts level="basic">Callback Functions</keyconcepts>
+    <keyconcepts level="basic">Multithreading</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows"></library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    <nvcc-compiler></nvcc-compiler>
+    <nvcc-compiler file="simpleCallback.cu"></nvcc-compiler>
+    <sm-arch>sm10</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>simpleCallback.cu</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

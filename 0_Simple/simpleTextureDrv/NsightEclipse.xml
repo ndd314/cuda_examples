@@ -1,0 +1,76 @@
+<entry>
+    <name>Simple Texture (Driver Version)</name>
+    <description><![CDATA[Simple example that demonstrates use of Textures in CUDA.  This sample uses the new CUDA 4.0 kernel launch Driver API.]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords></keywords>
+    <scope>1:CUDA Basic Topics,2:Texture,2:Image Processing</scope>
+    <files>
+        <file>data\simpleTexture_kernel32.ptx</file>
+        <file>data\simpleTexture_kernel64.ptx</file>
+        <file>data\lena_bw.pgm</file>
+        <file>data\ref_rotated.pgm</file>
+    </files>
+    <cudaapi>cuModuleLoad</cudaapi>
+    <cudaapi>cuModuleLoadDataEx</cudaapi>
+    <cudaapi>cuModuleGetFunction</cudaapi>
+    <cudaapi>cuLaunchKernel</cudaapi>
+    <cudaapi>cuCtxSynchronize</cudaapi>
+    <cudaapi>cuMemcpyDtoH</cudaapi>
+    <cudaapi>cuMemAlloc</cudaapi>
+	<cudaapi>cuMemFree</cudaapi>
+    <cudaapi>cuArrayCreate</cudaapi>
+    <cudaapi>cuArrayDestroy</cudaapi>
+    <cudaapi>cuCtxDetach</cudaapi>
+    <cudaapi>cuMemcpy2D</cudaapi>
+    <cudaapi>cuModuleGetTexRef</cudaapi>
+    <cudaapi>cuTexRefSetArray</cudaapi>
+    <cudaapi>cuTexRefSetAddressMode</cudaapi>
+    <cudaapi>cuTexRefSetFilterMode</cudaapi>
+    <cudaapi>cuTexRefSetFlags</cudaapi>
+    <cudaapi>cuTexRefSetFormat</cudaapi>
+    <cudaapi>cuParamSetTexRef</cudaapi>
+    
+    <keyconcepts level="basic">CUDA Driver API</keyconcepts>
+    <keyconcepts level="basic">Texture</keyconcepts>
+	<keyconcepts level="basic">Image Processing</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+
+    <!-- Either absolute or relative to sample -->
+    <library os="linux">cuda</library>
+    <library os="windows">cuda</library>
+    <library os="macosx" framework="true">CUDA</library>
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows"></library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    
+    <nvcc-compiler file="simpleTexture_kernel.cu"></nvcc-compiler>
+    <sm-arch></sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>simpleTextureDrv.cpp</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+
+    <!-- Nsight EE does not support driver API samples import -->
+    <no-nsight-eclipse/>
+</entry>

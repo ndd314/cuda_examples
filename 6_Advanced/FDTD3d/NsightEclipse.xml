@@ -1,0 +1,36 @@
+<entry>
+    <name>CUDA C 3D FDTD</name>
+    <description><![CDATA[This sample applies a finite differences time domain progression stencil on a 3D surface.]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords>GPGPU, CUDA, finite difference, fdtd, differential equation, pde, ode</keywords>
+    <scope>1:CUDA Advanced Topics,1:Performance Strategies</scope>
+    <files>
+    </files>
+    
+    <keyconcepts level="advanced">Performance Strategies</keyconcepts>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    
+    <nvcc-compiler file="src\FDTD3dGPU.cu"></nvcc-compiler>
+    <sm-arch>sm10</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>FDTD3d.cpp</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

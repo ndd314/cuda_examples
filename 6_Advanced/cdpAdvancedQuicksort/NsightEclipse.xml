@@ -1,0 +1,40 @@
+<entry>
+    <name>Advanced Quicksort (CUDA Dynamic Parallelism)</name>
+    <description><![CDATA[This sample demonstrates an advanced quicksort implemented using CUDA Dynamic Parallelism.  This sample requires devices with compute capability 3.5 or higher.]]></description>
+    <whitepaper></whitepaper>
+    <minspec>KEPLER SM 3.5</minspec>
+    <keywords>GPGPU</keywords>
+    <scope>1:CUDA Advanced Topics</scope>
+    <cudaapi></cudaapi>
+    
+    <keyconcepts level="advanced">CUDA Dynamic Parallelism</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation></devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    
+    <nvcc-compiler file="cdpAdvancedQuicksort.cu"></nvcc-compiler>
+    <sm-arch>sm35</sm-arch>
+    
+    <nvcc-compiler file="cdpBitonicSort.cu"></nvcc-compiler>
+    <sm-arch>sm35</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>cdpAdvancedQuicksort.cu</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

@@ -1,0 +1,49 @@
+<entry>
+    <name>simpleDevLibCUBLAS GPU Device API Library Functions (CUDA Dynamic Parallelism)</name>
+    <description><![CDATA[This sample implements a simple CUBLAS function calls that call GPU device API library running CUBLAS functions.  This sample requires a SM 3.5 capable device.]]></description>
+    <whitepaper></whitepaper>
+    <minspec>KEPLER SM 3.5</minspec>
+    <keywords>CUDA,CUBLAS,CDP</keywords>
+    <scope>1:CUDA Basic Topics,3:Linear Algebra</scope>
+    <files>
+    </files>
+    <cudaapi>cublasCreate</cudaapi>
+    <cudaapi>cublasSetVector</cudaapi>
+    <cudaapi>cublasSgemm</cudaapi>
+    <cudaapi>cudaMalloc</cudaapi>
+    <cudaapi>cudaFree</cudaapi>
+    <cudaapi>cudaMemcpy</cudaapi>
+    
+    <keyconcepts level="basic">CUDA Dynamic Parallelism</keyconcepts>
+    <keyconcepts level="basic">Linear Algebra</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+	<library>cublas</library>
+	<library>cublas_device</library>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation></devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>kernels.cu</primary-file>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+
+    <nvcc-compiler file="kernels.cu"></nvcc-compiler>
+    <sm-arch>sm35</sm-arch>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

@@ -1,0 +1,64 @@
+<entry>
+    <name>Image denoising</name>
+    <description><![CDATA[ This sample demonstrates two adaptive image denoising techniques: KNN and NLM, based on computation of both geometric and color distance between texels. While both techniques are implemented in the DirectX SDK using shaders, massively speeded up variation of the latter technique, taking advantage of shared memory, is implemented in addition to DirectX counterparts. ]]></description>
+    <whitepaper>doc\imageDenoising.pdf</whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords>CUDA,Image Processing, noise reduction</keywords>
+    <scope>1:CUDA Advanced Topics, 2:Image Processing,2:Computer Vision</scope>
+    <files>
+      <file>data\portrait_noise.bmp</file>
+      <file>data\ref_passthru.ppm</file>
+      <file>data\ref_knn.ppm</file>
+      <file>data\ref_nlm.ppm</file>
+      <file>data\ref_nlm2.ppm</file>
+    </files>
+    <qatests>
+      <qatest>-kernel=0 -file=ref_passthru.ppm</qatest>
+      <qatest>-kernel=1 -file=ref_knn.ppm</qatest>
+      <qatest>-kernel=2 -file=ref_nlm.ppm</qatest>
+      <qatest>-kernel=3 -file=ref_nlm2.ppm</qatest>
+    </qatests>
+    <keyconcepts level="advanced">Image Processing</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+    <library>GLU</library>
+    <library>GL</library>
+    <library os="macosx" framework="true">GLUT</library>
+    <library os="linux">X11</library>
+    <library os="linux">GLEW</library>
+    <library os="linux">glut</library>
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows" arch="x86_64">../../common/lib/x64</library-path>
+    <library-path os="windows" arch="Win32">../../common/lib/Win32</library-path>
+    <library-path os="linux" arch="x86_64">../../common/lib/linux/x86_64</library-path>
+    <library-path os="linux" arch="i686">../../common/lib/linux/i686</library-path>
+    <library-path os="macosx">../../common/lib/darwin</library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    
+    <nvcc-compiler file="imageDenoising.cu"></nvcc-compiler>
+    <sm-arch>sm10</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>imageDenoising.cu</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

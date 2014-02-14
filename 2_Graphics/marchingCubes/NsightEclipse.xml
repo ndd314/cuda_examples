@@ -1,0 +1,73 @@
+<entry>
+    <name>Marching Cubes Isosurfaces</name>
+    <description><![CDATA[This sample extracts a geometric isosurface from a volume dataset using the marching cubes algorithm. It uses the scan (prefix sum) function from the Thrust library to perform stream compaction. ]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords>OpenGL, isosurface, marching cubes</keywords>
+    <scope>2:Graphics Interop,1:CUDA Advanced Topics,3:Physically-Based Simulation</scope>
+    <files>
+        <file>..\..\doc\Thrust_license.txt</file>
+        <file>data\Bucky.raw</file>
+        <file>data\ref_march_cubes.ppm</file>
+        <file>data\posArray.bin</file>
+        <file>data\normalArray.bin</file>
+        <file>data\compVoxelArray.bin</file>
+    </files>
+    <qatests>
+      <qatest>-dump=0 -file=posArray.bin</qatest>
+      <qatest>-dump=1 -file=normalArray.bin</qatest>
+      <qatest>-dump=2 -file=compVoxelArray.bin</qatest>
+    </qatests>
+    <cudaapi>cudaGLSetGLDevice</cudaapi>
+    <cudaapi>cudaGraphicsMapResources</cudaapi>
+    <cudaapi>cudaGraphicsUnmapResources</cudaapi>
+    <cudaapi>cudaGraphicsResourceGetMappedPointer</cudaapi>
+    <cudaapi>cudaGraphicsRegisterResource</cudaapi>
+    <cudaapi>cudaGraphicsGLRegisterBuffer</cudaapi>
+    <cudaapi>cudaGraphicsUnregisterResource</cudaapi>
+    <keyconcepts level="advanced">OpenGL Graphics Interop</keyconcepts>
+    <keyconcepts level="advanced">Vertex Buffers</keyconcepts>
+    <keyconcepts level="advanced">3D Graphics</keyconcepts>
+    <keyconcepts level="advanced">Physically Based Simulation</keyconcepts>
+  
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+    <library>GLU</library>
+    <library>GL</library>
+    <library os="macosx" framework="true">GLUT</library>
+    <library os="linux">X11</library>
+    <library os="linux">GLEW</library>
+    <library os="linux">glut</library>
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows" arch="x86_64">../../common/lib/x64</library-path>
+    <library-path os="windows" arch="Win32">../../common/lib/Win32</library-path>
+    <library-path os="linux" arch="x86_64">../../common/lib/linux/x86_64</library-path>
+    <library-path os="linux" arch="i686">../../common/lib/linux/i686</library-path>
+    <library-path os="macosx">../../common/lib/darwin</library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    <nvcc-compiler file="marchingCubes_kernel.cu"></nvcc-compiler>
+    <sm-arch>sm10</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>marchingCubes.cpp</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

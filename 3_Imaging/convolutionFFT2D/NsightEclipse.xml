@@ -1,0 +1,42 @@
+<entry>
+    <name>FFT-Based 2D Convolution</name>
+    <description><![CDATA[This sample demonstrates how 2D convolutions with very large kernel sizes can be efficiently implemented using FFT transformations.]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords>CUDA,CUFFT,DSP,non-separable convolution,finite impulse-response filter,Image Processing</keywords>
+    <scope>1:CUDA Advanced Topics,2:Image Processing,2:Computer Vision</scope>
+    <files>
+    </files>
+    <cudaapi>cufftPlan2d</cudaapi>
+    <cudaapi>cufftExecR2C</cudaapi>
+    <cudaapi>cufftExecC2R</cudaapi>
+    <cudaapi>cufftDestroy</cudaapi>
+    <keyconcepts level="advanced">Image Processing</keyconcepts>
+    <keyconcepts level="advanced">CUFFT Library</keyconcepts>
+
+    <library>cufft</library>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    
+    <nvcc-compiler file="convolutionFFT2D.cu"></nvcc-compiler>
+    <sm-arch>sm10</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>main.cpp</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

@@ -1,0 +1,58 @@
+ <entry>
+  <name>simpleIPC</name> 
+ <description>
+ <![CDATA[This CUDA Runtime API sample is a very basic sample that demonstrates Inter Process Communication with one process per GPU for computation.  Requires Compute Capability 2.0 or higher and a Linux Operating System
+  ]]> 
+	</description>
+	<screenshot_sm /> 
+	<screenshot_md /> 
+	<screenshot_lg /> 
+	<userguide/> 
+	<video /> 
+	<whitepaper /> 
+	<minspec>SM 2.0</minspec>
+	<keywords>GPGPU</keywords> 
+	<scope>1:CUDA Basic Topics,1:CUDA Systems Integration</scope> 
+    <cudaapi>cudaIpcGetEventHandlet</cudaapi>
+    <cudaapi>cudaIpcOpenMemHandle</cudaapi>
+    <cudaapi>cudaIpcCloseMemHandle</cudaapi>
+    <cudaapi>cudaFreeHost</cudaapi>
+    <cudaapi>cudaMemcpy</cudaapi>
+    
+    <keyconcepts level="basic">CUDA Systems Integration</keyconcepts>
+    <keyconcepts level="basic">Peer to Peer</keyconcepts>
+    <keyconcepts level="basic">InterProcess Communication</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="linux"></library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    <nvcc-compiler></nvcc-compiler>
+    <nvcc-compiler file="simpleIPC.cu"></nvcc-compiler>
+    <sm-arch>sm10</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>simpleIPC.cu</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686</supported-env>
+  </entry>

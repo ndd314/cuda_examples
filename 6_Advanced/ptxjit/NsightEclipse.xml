@@ -1,0 +1,47 @@
+<entry>
+    <name>PTX Just-in-Time compilation</name>
+    <description>
+      <![CDATA[This sample uses the Driver API to just-in-time compile (JIT) a Kernel from PTX code. Additionally, this sample demonstrates the seamless interoperability capability of the CUDA Runtime and CUDA Driver API calls.  For CUDA 5.5, this sample shows how to use cuLink* functions to link PTX assembly using the CUDA driver at runtime.]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 2.0</minspec>
+    <keywords>CUDA,Advanced Topics</keywords>
+    <scope>1:CUDA Advanced Topics</scope>
+    <files>
+        <file>myPtx32.ptx</file>
+        <file>myPtx64.ptx</file>
+    </files>
+    
+    <keyconcepts level="advanced">CUDA Driver API</keyconcepts>
+    
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+    <library os="linux">cuda</library>
+    <library os="windows">cuda</library>
+    <library os="macosx" framework="true">CUDA</library>
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows"></library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>separate</devicecompilation>
+    <sm-arch>sm20</sm-arch>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>ptxjit.cpp</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

@@ -1,0 +1,45 @@
+<entry>
+    <name>ConjugateGradient</name>
+    <description><![CDATA[This sample implements a conjugate gradient solver on GPU
+ using CUBLAS and CUSPARSE library.]]></description>
+    <whitepaper></whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords>CUDA,CUBLAS,CUSPARSE,Sparse Matrix</keywords>
+    <scope>1:CUDA Advanced Topics,3:Linear Algebra</scope>
+    <files>
+    </files>
+    <keyconcepts level="advanced">Linear Algebra</keyconcepts>
+    <keyconcepts level="advanced">CUBLAS Library</keyconcepts>
+    <keyconcepts level="advanced">CUSPARSE Library</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+	<library>cublas</library>
+	<library>cusparse</library>
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows"></library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    
+    <sm-arch></sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>main.cpp</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>

@@ -1,0 +1,68 @@
+<entry>
+    <name>Fluids (OpenGL Version)</name>
+    <description><![CDATA[An example of fluid simulation using CUDA and CUFFT, with OpenGL rendering.]]></description>
+    <whitepaper>doc\fluidsGL.pdf</whitepaper>
+    <minspec>SM 1.0</minspec>
+    <keywords>CUDA,CUFFT,GPGPU,Fluid Simulation,FFT</keywords>
+    <scope>2:Graphics Interop,1:CUDA Advanced Topics,3:Physically-Based Simulation</scope>
+    <files>
+      <file>data\ref_fluidsGL.ppm</file>
+    </files>
+    <qatests>
+       <qatest>-file=ref_fluidsGL.ppm</qatest>
+    </qatests>
+    <cudaapi>cudaGLSetGLDevice</cudaapi>
+    <cudaapi>cudaGraphicsMapResources</cudaapi>
+    <cudaapi>cudaGraphicsUnmapResources</cudaapi>
+    <cudaapi>cudaGraphicsResourceGetMappedPointer</cudaapi>
+    <cudaapi>cudaGraphicsRegisterResource</cudaapi>
+    <cudaapi>cudaGraphicsGLRegisterBuffer</cudaapi>
+    <cudaapi>cudaGraphicsUnregisterResource</cudaapi>
+    <keyconcepts level="advanced">Graphics Interop</keyconcepts>
+    <keyconcepts level="advanced">CUFFT Library</keyconcepts>
+    <keyconcepts level="advanced">Physically-Based Simulation</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+    <library>GLU</library>
+    <library>GL</library>
+    <library>cufft</library>
+    <library os="linux">glut</library>
+    <library os="linux">X11</library>
+    <library os="linux">Xi</library>
+    <library os="linux">Xmu</library>
+    <library os="linux">GLEW</library>
+    <library os="macosx" framework="true">GLUT</library>
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows"></library-path>
+    <library-path os="linux" arch="x86_64">../../common/lib/linux/x86_64</library-path>
+    <library-path os="linux" arch="i686">../../common/lib/linux/i686</library-path>
+    <library-path os="macosx">../../common/lib/darwin</library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    
+    <nvcc-compiler file="fluidsGL_kernels.cu"></nvcc-compiler>
+    <sm-arch>sm10</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>fluidsGL.cpp</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686, :arm</supported-env>
+</entry>
